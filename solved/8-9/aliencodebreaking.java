@@ -5,7 +5,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class Main {
+public class aliencodebreaking {
 
     public static int X;
     public static int N = 43;
@@ -22,18 +22,6 @@ public class Main {
     public static ArrayList<Long> values = new ArrayList<>();
     public static ArrayList<Long> values_cache = new ArrayList<>();
     public static ArrayList<Long> grid = new ArrayList<>();
-
-    public static ArrayList<BigInteger> fastIntegerOutput(BigInteger a){
-        ArrayList<BigInteger> ret = new ArrayList<>();
-        if(a.compareTo(B_BIG) == -1){
-            ret.add(a);
-            return ret;
-        }
-        else{
-            //BigInteger k = new BigInteger(""+Math.ceil(logBigInteger(a)));
-            return ret;
-        }
-    }
 
     public static int encToOffset(char c){
         if(c == ' '){
