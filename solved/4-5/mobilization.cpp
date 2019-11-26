@@ -21,18 +21,6 @@ vector<Point> convex_hull(vector<Point> points) {
   return upper;
 }
 
-double p(Point p1, Point p2) {
-  double A = p1.first;
-  double B = p2.first;
-  double C = p1.second;
-  double D = p2.second;
-  double a = (A*C+B*D-A*D-B*C);
-  double b = (A*D+B*C-2*B*D);
-  double x = max(0., min(1., -b/(2*a)));
-  double y = ((A*x)+(B*(1-x))) * ((C*x)+(D*(1-x))); 
-  return y;
-}
-
 int main() {
   int N;
   double B;
@@ -48,21 +36,18 @@ int main() {
   points = convex_hull(points);
   double best = 0;
   cout.precision(17);
-  for(int i = 0; i < points.size(); i++){
+  for(int i = 0; i < points.size()-1; i++){
     Point p1 = points[i];
-    int l = i;
-    int r = points.size()-1;
-    while(l < r) {
-      int mid = (l+r)/2;
-      Point p2 = points[mid];
-      Point p3 = points[mid+1];
-      if(p(p1, p2) < p(p1, p3)) {
-        l = mid+1;
-      } else {
-        r = mid;
-      }
-      best = max(p(p1,points[l]),best);
-    }
+    Point p2 = points[i+1];
+    double A = p1.first;
+    double B = p2.first;
+    double C = p1.second;
+    double D = p2.second;
+    double a = (A*C+B*D-A*D-B*C);
+    double b = (A*D+B*C-2*B*D);
+    double x = max(0., min(1., -b/(2*a)));
+    double y = ((A*x)+(B*(1-x))) * ((C*x)+(D*(1-x))); 
+    best = max(y, best);
   }
   cout << best << endl;
 }
